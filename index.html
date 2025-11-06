@@ -1,1 +1,39 @@
-<!DOCTYPE html><html><head><title>CI/CD</title></head><body><h1>✅ Деплой работает!</h1></body></html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vue CI/CD ёпта</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 2rem; }
+    button { margin: 0.5rem; padding: 0.5rem 1rem; font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ message }}</h1>
+    <p>Счётчик: {{ count }}</p>
+    <button @click="increment">+1</button>
+    <button @click="decrement">-1</button>
+    <button @click="reset">Сброс</button>
+  </div>
+
+  <script>
+    const { createApp, ref } = Vue;
+
+    createApp({
+      setup() {
+        const message = 'Ты на пенёк сел, должен был косарь отдать! Счетчик косарей ниже';
+        const count = ref(0);
+
+        const increment = () => count.value++;
+        const decrement = () => count.value--;
+        const reset = () => count.value = 0;
+
+        return { message, count, increment, decrement, reset };
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
